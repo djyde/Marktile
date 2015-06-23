@@ -18,7 +18,7 @@ gulp.task('jade',function(){
 
 gulp.task('sass',function(){
   sass('public/scss')
-    .pipe(gulp.dest('public/css'))
+    .pipe(gulp.dest('public/css'));
 })
 
 gulp.task('js',function(){
