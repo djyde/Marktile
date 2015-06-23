@@ -3,7 +3,13 @@ html
   head
     title Marktile
   body
-    h1 hello world
-    p#login
+    h1 Marktile
+    #user
       a#loginBtn(v-if="!oauth",href="javascript:void(0)") Login
+      a#username(v-if="oauth",href="#") {{ user.display_name }}
+    #marks
+      ul
+        li(v-repeat="files")
+          a(href="javascript:void(0)",v-on="click: open(page_id)") {{name}}
+      .content(v-text="content")
     script(src="public/scripts/index.js")
