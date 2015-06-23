@@ -5,8 +5,11 @@ html
   body
     h1 Marktile
     #user
-      a#loginBtn(v-if="!oauth",href="javascript:void(0)") Login
-      a#username(v-if="oauth",href="#") {{ user.display_name }}
+      #login(v-if="!oauth.access_token")
+        a#loginBtn(v-on="click: login",href="javascript:void(0)") Login
+      #user-info(v-if="oauth.access_token")
+        a#username(href="#") {{ user.display_name }}
+        a#logout(href="javascript:void(0)",v-on="click: logout") Logut
     #marks
       ul
         li(v-repeat="files")
