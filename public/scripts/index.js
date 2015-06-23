@@ -30,13 +30,19 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
     return access_token;
   }
 
-  var auth = new Vue({
-    el: '#auth',
+  var app = new Vue({
+    el: 'body',
     data: {
       user: {},
       oauth: {
         access_token: JSON.parse(localStorage.getItem('oauth')).access_token
-      }
+      },
+      files: [],
+      content: '',
+      title: ''
+    },
+    filters: {
+      marked: marked
     },
     methods: {
       login: function(){
@@ -45,50 +51,72 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
       logout: function(){
         localStorage.setItem('oauth','');
         document.location = '/'
+      },
+      open: function(page_id){
+        qwest.get(API_ENDPOINT + '/pages/' + page_id + '?pid=' + app.pid + '&access_token=' + access_token)
+          .then(function(response){
+            app.content = response.summary;
+            app.title = response.name;
+            app.current_page_id = page_id;
+          })
+      },
+      save: function(){
+        if (app.current_page_id) {
+          qwest.put(API_ENDPOINT + '/pages/' + app.current_page_id + '?pid=' + app.pid + '&access_token=' + access_token, {
+            name: app.title,
+            content: app.content
+          }).then(function(res){
+            if (res.success) {
+              alert('save success');
+              refreshFile();
+            } else {
+              console.log(res);
+            }
+          })
+        } else {
+          console.log(app.pid,app.oauth.access_token,app.title,app.content);
+          qwest.post(API_ENDPOINT + '/page?pid=' + app.pid + '&access_token=' + access_token ,{
+            name: app.title,
+            content: app.content
+          }).then(function(res){
+            if (res.page_id) {
+              alert('create and save success!');
+              app.current_page_id = res.page_id;
+              refreshFile();
+            };
+          })
+        }
+        
       }
     }
   })
 
-  var marks = new Vue({
-    el: '#marks',
-    data: {
-      pid: undefined,
-      files: [],
-      content: ''
-    },
-    filters: {
-      marked: marked
-    },
-    methods: {
-      open: function(page_id){
-        qwest.get(API_ENDPOINT + '/pages/' + page_id + '?pid=' + this.pid + '&access_token=' + access_token)
-          .then(function(response){
-            marks.content = response.summary
-            console.log(marks.content)
-          })
-      }
-    }
-  })
+  function refreshFile(){
+    if (isLogin()) {
+
+      qwest.get(API_ENDPOINT + '/projects?access_token=' + access_token)
+        .then(function(response){
+          for (var i = 0; i < response.length; i++) {
+            if (response[i].name === 'Marktile') {
+              app.pid = response[i].pid;
+            };
+          };
+          if (app.pid) {
+            qwest.get(API_ENDPOINT + '/pages?access_token=' + access_token + '&pid=' + app.pid)
+              .then(function(files){
+                app.files = files;
+              })
+          };
+        })
+    };
+  }
 
   if (isLogin()) {
     qwest.get(API_ENDPOINT + '/user/profile?access_token=' + access_token)
       .then(function(response){
-        auth.user = response;
+        app.user = response;
       });
 
-    qwest.get(API_ENDPOINT + '/projects?access_token=' + access_token)
-      .then(function(response){
-        for (var i = 0; i < response.length; i++) {
-          if (response[i].name === 'Marktile') {
-            marks.pid = response[i].pid;
-          };
-        };
-        if (marks.pid) {
-          qwest.get(API_ENDPOINT + '/pages?access_token=' + access_token + '&pid=' + marks.pid)
-            .then(function(files){
-              marks.files = files;
-            })
-        };
-      })
+    refreshFile();
   };
 })()

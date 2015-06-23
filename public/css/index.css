@@ -33,16 +33,25 @@ header {
           color: #f7f7f7;
           text-decoration: none; }
 
+.container {
+  width: 100%;
+  height: 100%; }
+
 #marks {
   height: 100%; }
   #marks div {
     display: inline-block;
     background-color: #212121;
-    height: 100%;
     box-sizing: border-box; }
   #marks .file {
     float: left;
-    width: 20%; }
+    width: 20%;
+    height: 100%; }
+    #marks .file p {
+      margin: 0;
+      color: #777;
+      padding-top: 18px;
+      padding-left: 18px; }
     #marks .file ul {
       padding: 0;
       margin: 0;
@@ -57,7 +66,9 @@ header {
       #marks .file ul li a:hover {
         background-color: #343434; }
   #marks .editor {
-    width: 40%; }
+    width: 40%;
+    height: 100%;
+    position: relative; }
     #marks .editor textarea {
       width: 100%;
       height: 100%;
@@ -68,8 +79,30 @@ header {
       box-sizing: border-box;
       color: #fff;
       font-size: 2em;
-      resize: none; }
+      resize: none;
+      padding-top: 96px; }
+    #marks .editor .tool-bar {
+      width: 100%;
+      position: absolute; }
+      #marks .editor .tool-bar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0; }
+    #marks .editor .title {
+      position: relative;
+      height: 48px;
+      width: 100%; }
+      #marks .editor .title input[type="text"] {
+        width: 100%;
+        padding: 12px 8px;
+        box-sizing: border-box;
+        background-color: #212121;
+        color: #fff;
+        outline: none;
+        border: none;
+        font-size: 1.8em; }
   #marks .content {
+    height: 100%;
     padding: 0 12px;
     float: right;
     width: 40%;

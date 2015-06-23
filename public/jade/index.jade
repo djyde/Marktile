@@ -18,13 +18,22 @@ html
             li 
               a#logout(href="javascript:void(0)",v-on="click: logout") Logut
               
-    #marks
-      .file
-        ul
-          li(v-repeat="files")
-            a(href="javascript:void(0)",v-on="click: open(page_id)") {{name}}
-      .editor
-        textarea(v-model="content",spellcheck="false")
-      .content(v-html="content | marked")
+    .container
+      #marks(v-if="oauth.access_token")
+        .file
+          p FILES
+          p(v-if="!files") 加载中...
+          ul
+            li(v-repeat="files")
+              a(href="javascript:void(0)",v-on="click: open(page_id)") {{name}}
+        .editor
+          .tool-bar
+            ul
+              li
+                a(href="#",v-on="click: save") Save
+            .title
+              input#title(type="text",v-model="title",placeholder="Title",autocomplete="off")
+          textarea(v-model="content",spellcheck="false")
+        .content(v-html="content | marked")
     footer Copyright 2015 Randy
     script(src="public/scripts/index.js")
