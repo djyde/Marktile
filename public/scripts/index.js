@@ -39,7 +39,8 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
       },
       files: [],
       content: '',
-      title: ''
+      title: '',
+      current_page_id: ''
     },
     filters: {
       marked: marked
@@ -87,8 +88,21 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
           })
         }
         
+      },
+      delete: function(){
+        console.log('deltes')
+        qwest.delete(API_ENDPOINT + '/pages/' + app.current_page_id + '?pid=' + app.pid + '&access_token=' + access_token)
+          .then(function(res){
+            if (res.success) {
+              alert('Delete success!');
+              document.location = '/'
+            } else {
+              console.log(res);
+            }
+          })
       }
     }
+
   })
 
   function refreshFile(){

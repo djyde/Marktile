@@ -88,6 +88,9 @@ header {
         list-style-type: none;
         margin: 0;
         padding: 0; }
+        #marks .editor .tool-bar ul li {
+          float: left;
+          margin-right: 12px; }
     #marks .editor .title {
       position: relative;
       height: 48px;
