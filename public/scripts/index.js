@@ -13,6 +13,8 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
 
 !(function(){
 
+  var API_ENDPOINT = 'https://api.worktile.com/v1';
+
   if (!localStorage.getItem('oauth')) {
     localStorage.setItem('oauth',JSON.stringify({}));
   };
@@ -22,8 +24,8 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
     return access_token;
   }
 
-  var login = new Vue({
-    el: '#user',
+  var auth = new Vue({
+    el: '#auth',
     data: {
       user: {},
       oauth: {
@@ -50,7 +52,7 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
     },
     methods: {
       open: function(page_id){
-        qwest.get('https://api.worktile.com/v1/pages/' + page_id + '?pid=' + this.pid + '&access_token=' + access_token)
+        qwest.get(API_ENDPOINT + '/pages/' + page_id + '?pid=' + this.pid + '&access_token=' + access_token)
           .then(function(response){
             marks.content = response.summary
             console.log(marks.content)
@@ -60,12 +62,12 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
   })
 
   if (isLogin()) {
-    qwest.get('https://api.worktile.com/v1/user/profile?access_token=' + access_token)
+    qwest.get(API_ENDPOINT + '/user/profile?access_token=' + access_token)
       .then(function(response){
-        login.user = response;
+        auth.user = response;
       });
 
-    qwest.get('https://api.worktile.com/v1/projects?access_token=' + access_token)
+    qwest.get(API_ENDPOINT + '/projects?access_token=' + access_token)
       .then(function(response){
         for (var i = 0; i < response.length; i++) {
           if (response[i].name === 'Marktile') {
@@ -73,7 +75,7 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
           };
         };
         if (marks.pid) {
-          qwest.get('https://api.worktile.com/v1/pages?access_token=' + access_token + '&pid=' + marks.pid)
+          qwest.get(API_ENDPOINT + '/pages?access_token=' + access_token + '&pid=' + marks.pid)
             .then(function(files){
               marks.files = files;
             })

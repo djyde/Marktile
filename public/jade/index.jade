@@ -4,7 +4,7 @@ html
     title Marktile
   body
     h1 Marktile
-    #user
+    #auth
       #login(v-if="!oauth.access_token")
         a#loginBtn(v-on="click: login",href="javascript:void(0)") Login
       #user-info(v-if="oauth.access_token")
