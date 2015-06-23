@@ -7,6 +7,7 @@ var gulp = require('gulp'),
 gulp.task('default',function(){
   gulp.watch('public/scss/*.scss',['sass']);
   gulp.watch('public/jade/*.jade',['jade']);
+  gulp.watch('public/scripts/*.js',['js']);
 })
 
 gulp.task('jade',function(){
@@ -18,4 +19,10 @@ gulp.task('jade',function(){
 gulp.task('sass',function(){
   sass('public/scss')
     .pipe(gulp.dest('public/css'))
+})
+
+gulp.task('js',function(){
+  gulp.src('public/scripts/*.js')
+    .pipe(concat('global.js'))
+    .pipe(gulp.dest('public/js'))
 })
