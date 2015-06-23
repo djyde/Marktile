@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 gulp.task('default',function(){
   gulp.watch('public/scss/*.scss',['sass']);
   gulp.watch('public/jade/*.jade',['jade']);
-  gulp.watch('public/scripts/*.js',['js']);
+  // gulp.watch('public/scripts/*.js',['js']);
 })
 
 gulp.task('jade',function(){
