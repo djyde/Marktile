@@ -17,13 +17,34 @@ header{
   padding: 12px 18px;
   overflow: hidden;
   background-color: $primary-color;
-  border-bottom: 1px solid #242424;
+  border-bottom: 1px solid #363636;
   .logo{
     float: left;
     text-decoration: none;
     color: #fff;
     font-size: 1.2em;
   }
+
+
+  .title{
+    width: 960px;
+    margin: 0 auto;
+    display: block;
+    input[type="text"]{
+      padding: 0 8px;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: $primary-color;
+      color: #fff;
+      outline: none;
+      border: none;
+      font-size: 1.2em;
+    }
+  }
+
+
+
 
   #auth{
     float: right;
@@ -93,24 +114,13 @@ header{
     width: 40%;
     height: 100%;
     position: relative;
-    textarea{
-      width: 100%;
-      height: 100%;
-      background-color: #26292C;
-      outline: none;
-      border: none;
-      padding: 12px;
-      box-sizing: border-box;
-      color: #fff;
-      font-size: 2em;
-      resize: none;
-      padding-top: 96px;
-    }
 
     .tool-bar{
-      width: 100%;
       position: absolute;
-
+      left: 0;
+      right: 0;
+      top: 0;
+      padding-top: 12px;
       ul{
         list-style-type: none;
         margin: 0;
@@ -118,26 +128,31 @@ header{
 
         li{
           float: left;
-          margin-right: 12px;
         }
       }
-    }
 
-    .title{
-      position: relative;
-      height: 48px;
-      width: 100%;
-      input[type="text"]{
-        width: 100%;
-        padding: 12px 8px;
-        box-sizing: border-box;
-        background-color: $primary-color;
-        color: #fff;
-        outline: none;
-        border: none;
-        font-size: 1.8em;
+      img{
+        max-width: 24px;
+        cursor: pointer;
+        margin: 8px 12px;
       }
     }
+    textarea{
+      width: 100%;
+      height: 100%;
+      background-color: #26292C;
+      outline: none;
+      border: none;
+      padding: 12px;
+      padding-top: 64px;
+      box-sizing: border-box;
+      color: #fff;
+      font-size: 2em;
+      resize: none;
+    }
+
+    
+
   }
 
   .content{

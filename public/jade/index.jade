@@ -14,15 +14,18 @@ html
         #user-info(v-if="oauth.access_token")
           ul.list
             li 
-              a#username(href="#") {{ user.display_name }}
+              a#username(href="javascript:void(0)") {{ user.display_name }}
             li 
               a#logout(href="javascript:void(0)",v-on="click: logout") Logut
+      .title(v-if="oauth.access_token")
+        input#title(type="text",v-model="title",placeholder="输入标题后即可保存为新文件",autocomplete="off")
+
               
     .container
       #marks(v-if="oauth.access_token")
         .file
           p FILES
-          p(v-if="!files") 加载中...
+          p(v-if="files.length === 0",style="font-size: .9em;") No file
           ul
             li(v-repeat="files")
               a(href="javascript:void(0)",v-on="click: open(page_id)") {{name}}
@@ -30,12 +33,10 @@ html
           .tool-bar
             ul
               li
-                a(href="#",v-on="click: save") Save
+                img(src="public/images/ic_save.png",v-on="click: save")
               li(v-if="current_page_id")
-                a(href="#",v-on="click: delete") Delete
-            .title
-              input#title(type="text",v-model="title",placeholder="Title",autocomplete="off")
+                img(src="public/images/ic_delete.png",v-on="click: delete")
           textarea(v-model="content",spellcheck="false")
         .content(v-html="content | marked")
-    footer Copyright 2015 Randy
+    //- footer Copyright 2015 Randy
     script(src="public/scripts/index.js")

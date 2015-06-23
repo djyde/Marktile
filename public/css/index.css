@@ -14,12 +14,26 @@ header {
   padding: 12px 18px;
   overflow: hidden;
   background-color: #212121;
-  border-bottom: 1px solid #242424; }
+  border-bottom: 1px solid #363636; }
   header .logo {
     float: left;
     text-decoration: none;
     color: #fff;
     font-size: 1.2em; }
+  header .title {
+    width: 960px;
+    margin: 0 auto;
+    display: block; }
+    header .title input[type="text"] {
+      padding: 0 8px;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #212121;
+      color: #fff;
+      outline: none;
+      border: none;
+      font-size: 1.2em; }
   header #auth {
     float: right; }
     header #auth .list {
@@ -69,6 +83,22 @@ header {
     width: 40%;
     height: 100%;
     position: relative; }
+    #marks .editor .tool-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      padding-top: 12px; }
+      #marks .editor .tool-bar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0; }
+        #marks .editor .tool-bar ul li {
+          float: left; }
+      #marks .editor .tool-bar img {
+        max-width: 24px;
+        cursor: pointer;
+        margin: 8px 12px; }
     #marks .editor textarea {
       width: 100%;
       height: 100%;
@@ -76,34 +106,11 @@ header {
       outline: none;
       border: none;
       padding: 12px;
+      padding-top: 64px;
       box-sizing: border-box;
       color: #fff;
       font-size: 2em;
-      resize: none;
-      padding-top: 96px; }
-    #marks .editor .tool-bar {
-      width: 100%;
-      position: absolute; }
-      #marks .editor .tool-bar ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0; }
-        #marks .editor .tool-bar ul li {
-          float: left;
-          margin-right: 12px; }
-    #marks .editor .title {
-      position: relative;
-      height: 48px;
-      width: 100%; }
-      #marks .editor .title input[type="text"] {
-        width: 100%;
-        padding: 12px 8px;
-        box-sizing: border-box;
-        background-color: #212121;
-        color: #fff;
-        outline: none;
-        border: none;
-        font-size: 1.8em; }
+      resize: none; }
   #marks .content {
     height: 100%;
     padding: 0 12px;
