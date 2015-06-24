@@ -13,13 +13,13 @@ html
           #login(v-if="!oauth.access_token")
             ul.list
               li
-                a#loginBtn(v-on="click: login",href="javascript:void(0)") Login
+                a#loginBtn(v-on="click: login",href="javascript:void(0)") 登入
           #user-info(v-if="oauth.access_token")
             ul.list(v-if="!loading")
               li 
                 a#username(href="javascript:void(0)") {{ user.display_name }}
               li 
-                a#logout(href="javascript:void(0)",v-on="click: logout") Logut
+                a#logout(href="javascript:void(0)",v-on="click: logout") 登出
         .title(v-if="oauth.access_token")
           input#title(type="text",v-model="title",placeholder="输入标题后即可保存为新文件",autocomplete="off")
 

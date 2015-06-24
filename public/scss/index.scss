@@ -10,7 +10,8 @@ body{
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: Karla,'Hiragino Sans GB','Microsoft YaHei',微软雅黑,STHeiti,'WenQuanYi Micro Hei',Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 #cover{
@@ -125,7 +126,6 @@ header{
     width: 40%;
     height: 100%;
     position: relative;
-
     .tool-bar{
       position: absolute;
       left: 0;
@@ -149,6 +149,7 @@ header{
       }
     }
     textarea{
+      line-height: 32px;
       width: 100%;
       height: 100%;
       background-color: #26292C;
@@ -158,7 +159,7 @@ header{
       padding-top: 64px;
       box-sizing: border-box;
       color: #fff;
-      font-size: 1.2em;
+      font-size: .9em;
       resize: none;
     }
 
@@ -171,8 +172,15 @@ header{
     padding: 0 12px;
     float: right;
     width: 40%;
-    color: #fff;
+    background-color: #fff;
     overflow: auto;
+    line-height: 32px;
+
+    font-size: .9em;
+    
+    img{
+      max-width: 100%;
+    }
   }
 }
 

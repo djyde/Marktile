@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html {
   width: 100%;
   height: 100%; }
@@ -8,7 +7,8 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: Karla,'Hiragino Sans GB','Microsoft YaHei',微软雅黑,STHeiti,'WenQuanYi Micro Hei',Helvetica,Arial,sans-serif; }
+  -webkit-font-smoothing: antialiased;
+  font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; }
 
 #cover {
   width: 100%;
@@ -110,6 +110,7 @@ header {
         cursor: pointer;
         margin: 8px 12px; }
     #marks .editor textarea {
+      line-height: 32px;
       width: 100%;
       height: 100%;
       background-color: #26292C;
@@ -119,15 +120,19 @@ header {
       padding-top: 64px;
       box-sizing: border-box;
       color: #fff;
-      font-size: 1.2em;
+      font-size: .9em;
       resize: none; }
   #marks .content {
     height: 100%;
     padding: 0 12px;
     float: right;
     width: 40%;
-    color: #fff;
-    overflow: auto; }
+    background-color: #fff;
+    overflow: auto;
+    line-height: 32px;
+    font-size: .9em; }
+    #marks .content img {
+      max-width: 100%; }
 
 footer {
   background-color: #212121;
