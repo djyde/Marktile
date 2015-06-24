@@ -60,7 +60,7 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
     },
     methods: {
       login: function(){
-        document.location = 'https://api.worktile.com/oauth2/authorize?client_id=61738b47b10741e7aff803f51d74bceb&redirect_uri=http://localhost:1024/login.html'
+        document.location = 'https://api.worktile.com/oauth2/authorize?client_id=61738b47b10741e7aff803f51d74bceb&redirect_uri=' + document.location.href + 'login.html'
       },
       logout: function(){
         localStorage.setItem('oauth','');
