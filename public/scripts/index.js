@@ -70,7 +70,7 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
         progressbar.setProgress(15);
         qwest.get(API_ENDPOINT + '/pages/' + page_id + '?pid=' + app.pid + '&access_token=' + access_token)
           .then(function(response){
-            app.content = response.summary;
+            app.content = response.content;
             app.title = response.name;
             app.current_page_id = page_id;
             progressbar.finish();
