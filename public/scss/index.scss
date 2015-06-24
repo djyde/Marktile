@@ -13,6 +13,17 @@ body{
   font-family: Karla,'Hiragino Sans GB','Microsoft YaHei',微软雅黑,STHeiti,'WenQuanYi Micro Hei',Helvetica,Arial,sans-serif;
 }
 
+#cover{
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  -webkit-transition: display .2s;
+  color: #fff;
+  font-size: 8em;
+  text-align: center;
+  padding-top: 256px;
+}
+
 header{
   padding: 12px 18px;
   overflow: hidden;
@@ -147,7 +158,7 @@ header{
       padding-top: 64px;
       box-sizing: border-box;
       color: #fff;
-      font-size: 2em;
+      font-size: 1.2em;
       resize: none;
     }
 
@@ -161,6 +172,7 @@ header{
     float: right;
     width: 40%;
     color: #fff;
+    overflow: auto;
   }
 }
 
