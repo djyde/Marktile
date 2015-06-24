@@ -122,6 +122,7 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
     if (isLogin()) {
       qwest.get(API_ENDPOINT + '/projects?access_token=' + access_token)
         .then(function(response){
+          console.log(response)
           for (var i = 0; i < response.length; i++) {
             if (response[i].name === 'Marktile') {
               app.pid = response[i].pid;
@@ -134,7 +135,10 @@ e.$nextTick=function(t){c.nextTick(t,this)},e.$appendTo=function(t,e,n){return i
                 app.loading = false;
                 progressbar.finish();
               })
-          };
+          } else {
+            progressbar.finish();
+            alert('请先在 Worktile 中新建名为 Marktile 的项目。')
+          }
         })
     };
   }

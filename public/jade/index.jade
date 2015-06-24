@@ -25,6 +25,12 @@ html
 
                 
       .container
+        #landing(v-if="!oauth.access_token")
+          h1.center Marktile
+          p.center 基于 Worktile 的 Markdown 云笔记
+          img(src="public/images/screenshot.png")
+          p.warning * 使用前请先在 Worktile 中新建名为 Marktile 的项目
+          a(href="javascript:void(0)",v-on="click: login").btn 立即登入
         #marks(v-if="oauth.access_token")
           .file
             p FILES
